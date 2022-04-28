@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css?_v=20220428120146"/>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css?_v=20220428120146"/>
+	<link rel="stylesheet" href="css/style.css">
+	<title>Studika</title>
+</head>
+
+<body>
+
+	<svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
+		<symbol id="icon-search">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M1.7 7.64999C1.7 4.3639 4.36391 1.7 7.65001 1.7C10.9361 1.7 13.6 4.3639 13.6 7.64999C13.6 9.25281 12.9662 10.7076 11.9356 11.7774C11.9063 11.7999 11.8781 11.8246 11.8513 11.8515C11.8245 11.8783 11.7998 11.9065 11.7773 11.9358C10.7075 12.9663 9.25274 13.6 7.65001 13.6C4.36391 13.6 1.7 10.9361 1.7 7.64999ZM12.4249 13.6272C11.1162 14.674 9.45622 15.3 7.65001 15.3C3.42502 15.3 0 11.875 0 7.64999C0 3.42502 3.42502 0 7.65001 0C11.875 0 15.3 3.42502 15.3 7.64999C15.3 9.4563 14.674 11.1164 13.627 12.4251L16.7509 15.549C17.0828 15.8809 17.0828 16.4191 16.7509 16.751C16.4189 17.083 15.8807 17.083 15.5488 16.751L12.4249 13.6272Z"/>
+		</symbol>
+		<symbol id="icon-reset">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z"/>
+		</symbol>
+		<symbol id="icon-bell">
+			<path d="M22 12C22 10.4087 21.3679 8.88258 20.2426 7.75736C19.1174 6.63214 17.5913 6 16 6C14.4087 6 12.8826 6.63214 11.7574 7.75736C10.6321 8.88258 10 10.4087 10 12C10 19 7 21 7 21H25C25 21 22 19 22 12Z" stroke="#A7A7A7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+			<path d="M17.73 25C17.5542 25.3031 17.3019 25.5547 16.9982 25.7295C16.6946 25.9044 16.3504 25.9965 16 25.9965C15.6496 25.9965 15.3054 25.9044 15.0018 25.7295C14.6982 25.5547 14.4458 25.3031 14.27 25" stroke="#A7A7A7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+			<!-- stroke="#A7A7A7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" -->
+		</symbol>
+		<symbol id="icon-share">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M16.7254 10.1429V18H15.2417V10.1429L13.0162 12.5L12 11.4842L15.9835 7L20 11.4842L18.9509 12.5L16.7254 10.1429ZM7 15V23V24H8H24H25V23V15H23V22H9V15H7Z"/>
+		</symbol>
+		<symbol id="icon-check">
+			<path d="M0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16Z" fill="#E7F2FF"/>
+			<path d="M12.7951 19.875L8.62508 15.705L7.20508 17.115L12.7951 22.705L24.7951 10.705L23.3851 9.29504L12.7951 19.875Z" fill="#6A9AD2"/>	
+		</symbol>
+		<symbol id="icon-not-check">
+			<path d="M0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16Z" fill="#FF0000" fill-opacity="0.12"/>
+			<path d="M23 10.41L21.59 9L16 14.59L10.41 9L9 10.41L14.59 16L9 21.59L10.41 23L16 17.41L21.59 23L23 21.59L17.41 16L23 10.41Z" fill="#FF0000"/>	
+		</symbol>
+		<symbol id="icon-dorm">
+			<path d="M11 2H13.9194L9.91938 7H17V5H14.0806L18.0806 0H11V2Z"/>
+			<path d="M2 4V6H6L0 14H9V12H4L10 4H2Z"/>
+		</symbol>
+		<symbol id="icon-gos">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M8 2.23607L13.5279 5H2.47214L8 2.23607ZM8 0L0 4V5V7H2H14H16V5V4L8 0ZM12 8H14V13H12V8ZM15 14V16H1L1 14L15 14ZM9 8V13H7V8H9ZM4 8H2V13H4V8Z" fill="#222222"/>
+		</symbol>
+		<symbol id="icon-war">
+			<path d="M12 1H3L7 7L3 12H12L16 7L12 1Z" stroke="#222222" stroke-width="2"/>
+		</symbol>
+	</svg>
+
+	<div class="wrapper">
+		<header class="header">
+	<div class="_container">
+		<div class="header__overlay"></div>
+		<div class="header__body">
+			<div class="header__top">
+				<button class="header__burger">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+				<div class="header__info">
+					<a href="#" title="Главная" class="_icon-logo header__logo"></a>
+					<div data-da=".header__mobile-menu, 767.98" class="header__location">
+						<span class="_icon-location"></span>
+						<div class="header__city">Москва</div>
+					</div>
+				</div>
+				<div class="header__search">
+					<svg data-da=".header__actions, 991.98" class="header__icon-search" width="17" height="17">
+						<use href="#icon-search"></use> 
+					</svg>
+					<input class="header__search-form" type="text" autocomplete="off" placeholder="Учебное заведение, специальность или профессия">
+					<svg class="header__icon-reset" width="14" height="14">
+						<use href="#icon-reset"></use>
+					</svg>
+				</div>
+				<div class="header__actions">
+					<a href="#" title="Избранное" class="header__favorite">
+						<span class="_icon-favorite"></span>
+						<span class="header__favorite-count">0</span>
+					</a>
+					<a data-da=".header__mobile-menu, 767.98" href="#" title="Профиль" class="header__profile">
+						<div>Екатерина</div>
+						<picture><source srcset="img/avatar.webp" type="image/webp"><img src="img/avatar.jpg" alt="Профиль"></picture>
+					</a>
+				</div>
+			</div>
+			<nav class="header__nav">
+				<div class="header__menu">
+					<div class="header__mobile-menu">
+
+					</div>
+					<svg class="header__nav-icon" width="20" height="20">
+						<use href="#icon-reset"></use>
+					</svg>
+					<div class="header__nav-links">
+						<a class="header__nav-link _active" href="#" title="Вузы">Вузы</a>
+						<a class="header__nav-link" href="#" title="Колледжи">Колледжи</a>
+						<a class="header__nav-link" href="#" title="Техникумы">Техникумы</a>
+						<a class="header__nav-link" href="#" title="Училища">Училища</a>
+						<a class="header__nav-link" href="#" title="Специальности">Специальности</a>
+						<a class="header__nav-link" href="#" title="Профессии">Профессии</a>
+						<a class="header__nav-link" href="#" title="Отзывы">Отзывы</a>
+						<a class="header__nav-link" href="#" title="Учебным заведениям">Учебным заведениям</a>
+						<a class="header__nav-link" href="#" title="Тест на профориентацию">Тест на профориентацию</a>
+						<a class="header__nav-link" href="#" title="Специальности">Специальности</a>
+						<a class="header__nav-link" href="#" title="Училища">Училища</a>
+						<a class="header__nav-link" href="#" title="Колледжи">Колледжи</a>
+						<a class="header__nav-link" href="#" title="Профессии">Профессии</a>
+						<a class="header__nav-link" href="#" title="Вузы">Вузы</a>
+						<svg class="header__nav-arrow" xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" viewBox="0 0 306 306">
+							<polygon points="58.65,267.75 175.95,153 58.65,35.7 94.35,0 247.35,153 94.35,306"/>
+						</svg>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</div>
+</header>
+		<main class="page">
+			<section class="breadcumps">
+					<div class="_container">
+					<a href="#" title="Назад" class="breadcumps__back">
+						<div class="breadcumps__arrow breadcumps__arrow_left">
+							<svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" viewBox="0 0 306 306">
+								<polygon points="58.65,267.75 175.95,153 58.65,35.7 94.35,0 247.35,153 94.35,306"/>
+							</svg>
+						</div>
+						<div class="breadcumps__back-link">Назад</div>
+					</a>
+					<div class="breadcumps__links">
+						<a href="#" title="Москва" class="breadcumps__link">Москва</a>
+						<div class="breadcumps__arrow">
+							<svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" viewBox="0 0 306 306">
+								<polygon points="58.65,267.75 175.95,153 58.65,35.7 94.35,0 247.35,153 94.35,306"/>
+							</svg>
+						</div>
+						<a href="#" title="Высшее образование" class="breadcumps__link">Высшее образование</a>
+						<div class="breadcumps__arrow">
+							<svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" viewBox="0 0 306 306">
+								<polygon points="58.65,267.75 175.95,153 58.65,35.7 94.35,0 247.35,153 94.35,306"/>
+							</svg>
+						</div>
+						<a href="#" title="Вузы" class="breadcumps__link">Вузы</a>
+						<div class="breadcumps__arrow">
+							<svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" viewBox="0 0 306 306">
+								<polygon points="58.65,267.75 175.95,153 58.65,35.7 94.35,0 247.35,153 94.35,306"/>
+							</svg>
+						</div>
+						<a href="#" title="МГТУ им. Н.Э. Баумана" class="breadcumps__link">МГТУ им. Н.Э. Баумана</a>
+						</div>
+			</section>
+			<section class="preview">
+				<div class="_container">
+					<div class="preview__image image-preview _ibg">
+							<picture><source srcset="img/university/University.webp" type="image/webp"><img src="img/university/University.jpg" alt="Университет"></picture>
+						<div class="image-preview__logo" style="z-index: 40;">
+							<picture><source srcset="img/university/university-logo.webp" type="image/webp"><img src="img/university/university-logo.png" alt=""></picture>
+						</div>
+						<div class="image-preview__buttons" style="z-index: 40;">
+							<button class="image-preview__btn image-preview__btn_review">оставить отзыв</button>
+							<button data-da=".info-preview, 991.98" class="image-preview__btn image-preview__btn_chances">проверить шансы поступить</button>
+						</div>
+					</div>
+					<div class="preview__body">
+						<div class="preview__info info-preview">
+							<div class="info-preview__name">
+								<h1 class="info-preview__title">Московский государственный технический университет имени Н.Э. Бáумана</h1>
+								<div data-da=".image-preview, 991.98" class="info-preview__actions">
+									<button class="info-preview__favorite _icon-favorite"><span>В Избранное</span></button>
+									<button class="info-preview__bell">
+										<svg width="32" height="32">
+											<use href="#icon-bell" style="fill: none">
+											</use>
+										</svg>
+									</button>
+									<button class="info-preview__share">
+										<svg width="32" height="32">
+											<use href="#icon-share">
+											</use>
+										</svg>
+									</button>
+								</div>
+							</div>
+							<div class="info-preview__row">
+								<div class="info-preview__rating _icon-star">
+									<span>2.4</span>
+									(75 отзывов)
+								</div>
+								<div class="info-preview__location">Москва, ул. Новочеремушкинская, д. 69</div>
+								<div class="info-preview__commission">Приемная комиссия: 7 (499) 181 21 33</div>
+							</div>
+							<div class="preview__uploaded">
+								<div class="preview__upload">Обновлено 11.11.2011</div>
+								<button class="preview__error">Сообщить об ошибке</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<div class="_container">
+				<section class="row">
+					<aside class="row__sidebar sidebar">
+						<ul class="sidebar__list">
+							<li><a href="#" title="Основная информация" class="sidebar__link">Основная информация<span>100</span></a></li>
+							<li><a href="#" title="Специальности" class="sidebar__link">Специальности<span>100</span></a></li>
+							<li><a href="#" title="Об университете" class="sidebar__link">Об университете<span>100</span></a></li>
+							<li><a href="#" title="Контакты" class="sidebar__link">Контакты<span>100</span></a></li>
+							<li><a href="#" title="Отзывы" class="sidebar__link">Отзывы<span>100</span></a></li>
+							<li><a href="#" title="Преподаватели" class="sidebar__link">Преподаватели<span>100</span></a></li>
+							<li><a href="#" title="Профессии" class="sidebar__link">Профессии<span>100</span></a></li>
+							<li><a href="#" title="Новости" class="sidebar__link">Новости<span>100</span></a></li>
+							<li><a href="#" title="Задать вопрос" class="sidebar__link">Задать вопрос<span>100</span></a></li>
+							<li><a href="#" title="Часто задаваемые вопросы" class="sidebar__link">Часто задаваемые вопросы<span>100</span></a></li>
+						</ul>
+					</aside>
+					<section class="row__content">
+						<section class="row__main-info main-info">
+							<h2 class="main-info__title _title">Основная информация</h2>
+							<div class="main-info__numbers">
+								<article class="main-info__places">
+									<div class="main-info__place">
+										<div class="main-info__place-number">4 532</div>
+										<div class="main-info__place-name">платных мест</div>
+									</div>
+									<div class="main-info__place">
+										<div class="main-info__place-number">1 702</div>
+										<div class="main-info__place-name">бюджетных мест</div>
+									</div>
+								</article>
+								<article class="main-info__ratings">
+									<div class="main-info__rating">
+										<div class="main-info__rating-number">1 место</div>
+										<div class="main-info__rating-name">в Санкт-Петербурге</div>
+									</div>
+									<div class="main-info__rating">
+										<div class="main-info__rating-number">12 место</div>
+										<div class="main-info__rating-name">в РФ</div>
+									</div>
+								</article>
+							</div>
+							<div class="main-info__parameters">
+								<ul class="main-info__list">
+									<li class="main-info__parametr">Государственный
+										<svg width="32" height="32">
+											<use href="#icon-check"></use>
+										</svg>
+									</li>
+									<li class="main-info__parametr">Общежитие
+										<svg width="32" height="32">
+											<use href="#icon-not-check"></use>
+										</svg>
+									</li>
+									<li class="main-info__parametr">Военная кафедра
+										<svg width="32" height="32">
+											<use href="#icon-check"></use>
+										</svg>
+									</li>
+								</ul>
+								<div class="main-info__representative">
+									<span class="main-info__representative-title">Вы представитель УЗ?</span>
+									<button class="main-info__representative-btn">получить доступ</button>
+								</div>
+							</div>
+						</section>
+						<section class="row__score score">
+							<h2 class="score__title _title">Проходной балл</h2>
+							<div class="score__graphic">
+								<canvas id="myChart"></canvas>
+							</div>
+						</section>
+						<section class="row__specialty specialty">
+							<div class="specialty__header">
+								<h2 class="specialty__title _title">Специальности</h2>
+								<div class="specialty__subtitle _subtitle">Специальности МГТУ им. Н. Э. Баумана</div>
+								<div class="specialty__amount">432 специальности<span> МГТУ им. Н. Э. Баумана</span></div>
+							</div>
+							<div class="specialty__sort sort-specialty">
+								<div class="sort-specialty__name">Сортировать:</div>
+								<ul class="sort-specialty__list">
+									<li>по оплате в год
+										<div class="sort-specialty__icon">
+											<span></span>
+											<span></span>
+											<span></span>
+										</div>
+									</li>
+									<li>по отзывам
+										<div class="sort-specialty__icon">
+											<span></span>
+											<span></span>
+											<span></span>
+										</div>
+									</li>
+									<li>по проходному баллу
+										<div class="sort-specialty__icon">
+											<span></span>
+											<span></span>
+											<span></span>
+										</div>
+									</li>
+									<li>по количeству бюджетных мест
+										<div class="sort-specialty__icon">
+											<span></span>
+											<span></span>
+											<span></span>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="specialty__items">
+								<div class="specialty__wrapper">
+									<a href="#" title="Прикладная математика и информатика" class="specialty__card card-specialty">
+										<div class="card-specialty__image _ibg">
+											<picture><source srcset="img/speciality.webp" type="image/webp"><img src="img/speciality.jpg" alt="Специальность"></picture>
+										</div>
+										<div class="card-specialty__info card-info">
+											<div class="card-info__number">бакалавриат<span>01.03.00</span></div>
+											<h3 class="card-info__name">Прикладная математика и информатика</h3>
+											<ul class="card-info__types">
+												<li class="card-info__type">Очно</li>
+												<li class="card-info__type">Заочно</li>
+												<li class="card-info__type">Очно-заочно</li>
+												<li class="card-info__type">Дистанционно</li>
+											</ul>
+											<div class="card-info__profiles">
+												<span class="card-info__profile">Программное обеспечение вычислительных систем</span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Математическое и программное обеспечение защиты информации</span></span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Экономика</span></span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Организация педагогическо...</span>
+											</div>
+											<button class="card-info__all-profiles">Все 43 профиля</button>
+										</div>
+										<div class="card-info__tags">
+											<div class="card-info__icons">
+												<div class="card-info__icon">
+													<svg width="19" height="14">
+														<use href="#icon-dorm"></use>
+													</svg>
+												</div>
+												<div class="card-info__icon">
+													<svg width="16" height="16">
+														<use href="#icon-gos"></use>
+													</svg>
+												</div>
+												<div class="card-info__icon">
+													<svg width="18" height="13" fill="none">
+														<use href="#icon-war"></use>
+													</svg>
+												</div>
+											</div>
+											<div class="card-info__category">
+												<div>Бюджетных<span> мест</span></div>
+												<span>260</span>
+											</div>
+											<div class="card-info__category">
+												<div>Проходной<span> балл</span></div>
+												<span>от 152</span>
+											</div>
+											<div class="card-info__category">
+												<div>Оплата в год</div>
+												<span>от 90 000 ₽</span>
+											</div>
+										</div>
+									</a>
+									<a href="#" title="Прикладная математика и информатика" class="specialty__card card-specialty">
+										<div class="card-specialty__image _ibg">
+											<picture><source srcset="img/speciality.webp" type="image/webp"><img src="img/speciality.jpg" alt="Специальность"></picture>
+										</div>
+										<div class="card-specialty__info card-info">
+											<div class="card-info__number">бакалавриат<span>01.03.00</span></div>
+											<h3 class="card-info__name">Прикладная математика и информатика</h3>
+											<ul class="card-info__types">
+												<li class="card-info__type">Очно</li>
+												<li class="card-info__type">Заочно</li>
+												<li class="card-info__type">Очно-заочно</li>
+												<li class="card-info__type">Дистанционно</li>
+											</ul>
+											<div class="card-info__profiles">
+												<span class="card-info__profile">Программное обеспечение вычислительных систем</span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Математическое и программное обеспечение защиты информации</span></span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Экономика</span></span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Организация педагогическо...</span>
+											</div>
+											<button class="card-info__all-profiles">Все 43 профиля</button>
+										</div>
+										<div class="card-info__tags">
+											<div class="card-info__icons">
+												<div class="card-info__icon">
+													<svg width="19" height="14">
+														<use href="#icon-dorm"></use>
+													</svg>
+												</div>
+												<div class="card-info__icon">
+													<svg width="16" height="16">
+														<use href="#icon-gos"></use>
+													</svg>
+												</div>
+												<div class="card-info__icon">
+													<svg width="18" height="13" fill="none">
+														<use href="#icon-war"></use>
+													</svg>
+												</div>
+											</div>
+											<div class="card-info__category">
+												<div>Бюджетных<span> мест</span></div>
+												<span>260</span>
+											</div>
+											<div class="card-info__category">
+												<div>Проходной<span> балл</span></div>
+												<span>от 152</span>
+											</div>
+											<div class="card-info__category">
+												<div>Оплата в год</div>
+												<span>от 90 000 ₽</span>
+											</div>
+										</div>
+									</a>
+									<a href="#" title="Прикладная математика и информатика" class="specialty__card card-specialty">
+										<div class="card-specialty__image _ibg">
+											<picture><source srcset="img/speciality.webp" type="image/webp"><img src="img/speciality.jpg" alt="Специальность"></picture>
+										</div>
+										<div class="card-specialty__info card-info">
+											<div class="card-info__number">бакалавриат<span>01.03.00</span></div>
+											<h3 class="card-info__name">Прикладная математика и информатика</h3>
+											<ul class="card-info__types">
+												<li class="card-info__type">Очно</li>
+												<li class="card-info__type">Заочно</li>
+												<li class="card-info__type">Очно-заочно</li>
+												<li class="card-info__type">Дистанционно</li>
+											</ul>
+											<div class="card-info__profiles">
+												<span class="card-info__profile">Программное обеспечение вычислительных систем</span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Математическое и программное обеспечение защиты информации</span></span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Экономика</span></span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Организация педагогическо...</span>
+											</div>
+											<button class="card-info__all-profiles">Все 43 профиля</button>
+										</div>
+										<div class="card-info__tags">
+											<div class="card-info__icons">
+												<div class="card-info__icon">
+													<svg width="19" height="14">
+														<use href="#icon-dorm"></use>
+													</svg>
+												</div>
+												<div class="card-info__icon">
+													<svg width="16" height="16">
+														<use href="#icon-gos"></use>
+													</svg>
+												</div>
+												<div class="card-info__icon">
+													<svg width="18" height="13" fill="none">
+														<use href="#icon-war"></use>
+													</svg>
+												</div>
+											</div>
+											<div class="card-info__category">
+												<div>Бюджетных<span> мест</span></div>
+												<span>260</span>
+											</div>
+											<div class="card-info__category">
+												<div>Проходной<span> балл</span></div>
+												<span>от 152</span>
+											</div>
+											<div class="card-info__category">
+												<div>Оплата в год</div>
+												<span>от 90 000 ₽</span>
+											</div>
+										</div>
+									</a>
+									<a href="#" title="Прикладная математика и информатика" class="specialty__card card-specialty">
+										<div class="card-specialty__image _ibg">
+											<picture><source srcset="img/speciality.webp" type="image/webp"><img src="img/speciality.jpg" alt="Специальность"></picture>
+										</div>
+										<div class="card-specialty__info card-info">
+											<div class="card-info__number">бакалавриат<span>01.03.00</span></div>
+											<h3 class="card-info__name">Прикладная математика и информатика</h3>
+											<ul class="card-info__types">
+												<li class="card-info__type">Очно</li>
+												<li class="card-info__type">Заочно</li>
+												<li class="card-info__type">Очно-заочно</li>
+												<li class="card-info__type">Дистанционно</li>
+											</ul>
+											<div class="card-info__profiles">
+												<span class="card-info__profile">Программное обеспечение вычислительных систем</span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Математическое и программное обеспечение защиты информации</span></span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Экономика</span></span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Организация педагогическо...</span>
+											</div>
+											<button class="card-info__all-profiles">Все 43 профиля</button>
+										</div>
+										<div class="card-info__tags">
+											<div class="card-info__icons">
+												<div class="card-info__icon">
+													<svg width="19" height="14">
+														<use href="#icon-dorm"></use>
+													</svg>
+												</div>
+												<div class="card-info__icon">
+													<svg width="16" height="16">
+														<use href="#icon-gos"></use>
+													</svg>
+												</div>
+												<div class="card-info__icon">
+													<svg width="18" height="13" fill="none">
+														<use href="#icon-war"></use>
+													</svg>
+												</div>
+											</div>
+											<div class="card-info__category">
+												<div>Бюджетных<span> мест</span></div>
+												<span>260</span>
+											</div>
+											<div class="card-info__category">
+												<div>Проходной<span> балл</span></div>
+												<span>от 152</span>
+											</div>
+											<div class="card-info__category">
+												<div>Оплата в год</div>
+												<span>от 90 000 ₽</span>
+											</div>
+										</div>
+									</a>
+									<a href="#" title="Прикладная математика и информатика" class="specialty__card card-specialty">
+										<div class="card-specialty__image _ibg">
+											<picture><source srcset="img/speciality.webp" type="image/webp"><img src="img/speciality.jpg" alt="Специальность"></picture>
+										</div>
+										<div class="card-specialty__info card-info">
+											<div class="card-info__number">бакалавриат<span>01.03.00</span></div>
+											<h3 class="card-info__name">Прикладная математика и информатика</h3>
+											<ul class="card-info__types">
+												<li class="card-info__type">Очно</li>
+												<li class="card-info__type">Заочно</li>
+												<li class="card-info__type">Очно-заочно</li>
+												<li class="card-info__type">Дистанционно</li>
+											</ul>
+											<div class="card-info__profiles">
+												<span class="card-info__profile">Программное обеспечение вычислительных систем</span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Математическое и программное обеспечение защиты информации</span></span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Экономика</span></span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Организация педагогическо...</span>
+											</div>
+											<button class="card-info__all-profiles">Все 43 профиля</button>
+										</div>
+										<div class="card-info__tags">
+											<div class="card-info__icons">
+												<div class="card-info__icon">
+													<svg width="19" height="14">
+														<use href="#icon-dorm"></use>
+													</svg>
+												</div>
+												<div class="card-info__icon">
+													<svg width="16" height="16">
+														<use href="#icon-gos"></use>
+													</svg>
+												</div>
+												<div class="card-info__icon">
+													<svg width="18" height="13" fill="none">
+														<use href="#icon-war"></use>
+													</svg>
+												</div>
+											</div>
+											<div class="card-info__category">
+												<div>Бюджетных<span> мест</span></div>
+												<span>260</span>
+											</div>
+											<div class="card-info__category">
+												<div>Проходной<span> балл</span></div>
+												<span>от 152</span>
+											</div>
+											<div class="card-info__category">
+												<div>Оплата в год</div>
+												<span>от 90 000 ₽</span>
+											</div>
+										</div>
+									</a>
+								</div>
+								<div class="swiper-pagination"></div>
+							</div>
+							<div class="specialty__slider swiper">
+								<div class="swiper-wrapper">
+									<a href="#" title="Прикладная математика и информатика" class="specialty__card card-specialty swiper-slide">
+										<div class="card-specialty__image _ibg">
+											<picture><source srcset="img/speciality.webp" type="image/webp"><img src="img/speciality.jpg" alt="Специальность"></picture>
+										</div>
+										<div class="card-specialty__info card-info">
+											<div class="card-info__number">бакалавриат<span>01.03.00</span></div>
+											<h3 class="card-info__name">Прикладная математика и информатика</h3>
+											<ul class="card-info__types">
+												<li class="card-info__type">Очно</li>
+												<li class="card-info__type">Заочно</li>
+												<li class="card-info__type">Очно-заочно</li>
+												<li class="card-info__type">Дистанционно</li>
+											</ul>
+											<div class="card-info__profiles">
+												<span class="card-info__profile">Программное обеспечение вычислительных систем</span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Математическое и программное обеспечение защиты информации</span></span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Экономика</span></span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Организация педагогическо...</span>
+											</div>
+											<button class="card-info__all-profiles">Все 43 профиля</button>
+										</div>
+										<div class="card-info__tags">
+											<div class="card-info__icons">
+												<div class="card-info__icon">
+													<svg width="19" height="14">
+														<use href="#icon-dorm"></use>
+													</svg>
+												</div>
+												<div class="card-info__icon">
+													<svg width="16" height="16">
+														<use href="#icon-gos"></use>
+													</svg>
+												</div>
+												<div class="card-info__icon">
+													<svg width="18" height="13" fill="none">
+														<use href="#icon-war"></use>
+													</svg>
+												</div>
+											</div>
+											<div class="card-info__category">
+												<div>Бюджетных<span> мест</span></div>
+												<span>260</span>
+											</div>
+											<div class="card-info__category">
+												<div>Проходной<span> балл</span></div>
+												<span>от 152</span>
+											</div>
+											<div class="card-info__category">
+												<div>Оплата в год</div>
+												<span>от 90 000 ₽</span>
+											</div>
+										</div>
+									</a>
+									<a href="#" title="Прикладная математика и информатика" class="specialty__card card-specialty swiper-slide">
+										<div class="card-specialty__image _ibg">
+											<picture><source srcset="img/speciality.webp" type="image/webp"><img src="img/speciality.jpg" alt="Специальность"></picture>
+										</div>
+										<div class="card-specialty__info card-info">
+											<div class="card-info__number">бакалавриат<span>01.03.00</span></div>
+											<h3 class="card-info__name">Прикладная математика и информатика</h3>
+											<ul class="card-info__types">
+												<li class="card-info__type">Очно</li>
+												<li class="card-info__type">Заочно</li>
+												<li class="card-info__type">Очно-заочно</li>
+												<li class="card-info__type">Дистанционно</li>
+											</ul>
+											<div class="card-info__profiles">
+												<span class="card-info__profile">Программное обеспечение вычислительных систем</span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Математическое и программное обеспечение защиты информации</span></span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Экономика</span></span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Организация педагогическо...</span>
+											</div>
+											<button class="card-info__all-profiles">Все 43 профиля</button>
+										</div>
+										<div class="card-info__tags">
+											<div class="card-info__icons">
+												<div class="card-info__icon">
+													<svg width="19" height="14">
+														<use href="#icon-dorm"></use>
+													</svg>
+												</div>
+												<div class="card-info__icon">
+													<svg width="16" height="16">
+														<use href="#icon-gos"></use>
+													</svg>
+												</div>
+												<div class="card-info__icon">
+													<svg width="18" height="13" fill="none">
+														<use href="#icon-war"></use>
+													</svg>
+												</div>
+											</div>
+											<div class="card-info__category">
+												<div>Бюджетных<span> мест</span></div>
+												<span>260</span>
+											</div>
+											<div class="card-info__category">
+												<div>Проходной<span> балл</span></div>
+												<span>от 152</span>
+											</div>
+											<div class="card-info__category">
+												<div>Оплата в год</div>
+												<span>от 90 000 ₽</span>
+											</div>
+										</div>
+									</a>
+									<a href="#" title="Прикладная математика и информатика" class="specialty__card card-specialty swiper-slide">
+										<div class="card-specialty__image _ibg">
+											<picture><source srcset="img/speciality.webp" type="image/webp"><img src="img/speciality.jpg" alt="Специальность"></picture>
+										</div>
+										<div class="card-specialty__info card-info">
+											<div class="card-info__number">бакалавриат<span>01.03.00</span></div>
+											<h3 class="card-info__name">Прикладная математика и информатика</h3>
+											<ul class="card-info__types">
+												<li class="card-info__type">Очно</li>
+												<li class="card-info__type">Заочно</li>
+												<li class="card-info__type">Очно-заочно</li>
+												<li class="card-info__type">Дистанционно</li>
+											</ul>
+											<div class="card-info__profiles">
+												<span class="card-info__profile">Программное обеспечение вычислительных систем</span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Математическое и программное обеспечение защиты информации</span></span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Экономика</span></span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Организация педагогическо...</span>
+											</div>
+											<button class="card-info__all-profiles">Все 43 профиля</button>
+										</div>
+										<div class="card-info__tags">
+											<div class="card-info__icons">
+												<div class="card-info__icon">
+													<svg width="19" height="14">
+														<use href="#icon-dorm"></use>
+													</svg>
+												</div>
+												<div class="card-info__icon">
+													<svg width="16" height="16">
+														<use href="#icon-gos"></use>
+													</svg>
+												</div>
+												<div class="card-info__icon">
+													<svg width="18" height="13" fill="none">
+														<use href="#icon-war"></use>
+													</svg>
+												</div>
+											</div>
+											<div class="card-info__category">
+												<div>Бюджетных<span> мест</span></div>
+												<span>260</span>
+											</div>
+											<div class="card-info__category">
+												<div>Проходной<span> балл</span></div>
+												<span>от 152</span>
+											</div>
+											<div class="card-info__category">
+												<div>Оплата в год</div>
+												<span>от 90 000 ₽</span>
+											</div>
+										</div>
+									</a>
+									<a href="#" title="Прикладная математика и информатика" class="specialty__card card-specialty swiper-slide">
+										<div class="card-specialty__image _ibg">
+											<picture><source srcset="img/speciality.webp" type="image/webp"><img src="img/speciality.jpg" alt="Специальность"></picture>
+										</div>
+										<div class="card-specialty__info card-info">
+											<div class="card-info__number">бакалавриат<span>01.03.00</span></div>
+											<h3 class="card-info__name">Прикладная математика и информатика</h3>
+											<ul class="card-info__types">
+												<li class="card-info__type">Очно</li>
+												<li class="card-info__type">Заочно</li>
+												<li class="card-info__type">Очно-заочно</li>
+												<li class="card-info__type">Дистанционно</li>
+											</ul>
+											<div class="card-info__profiles">
+												<span class="card-info__profile">Программное обеспечение вычислительных систем</span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Математическое и программное обеспечение защиты информации</span></span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Экономика</span></span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Организация педагогическо...</span>
+											</div>
+											<button class="card-info__all-profiles">Все 43 профиля</button>
+										</div>
+										<div class="card-info__tags">
+											<div class="card-info__icons">
+												<div class="card-info__icon">
+													<svg width="19" height="14">
+														<use href="#icon-dorm"></use>
+													</svg>
+												</div>
+												<div class="card-info__icon">
+													<svg width="16" height="16">
+														<use href="#icon-gos"></use>
+													</svg>
+												</div>
+												<div class="card-info__icon">
+													<svg width="18" height="13" fill="none">
+														<use href="#icon-war"></use>
+													</svg>
+												</div>
+											</div>
+											<div class="card-info__category">
+												<div>Бюджетных<span> мест</span></div>
+												<span>260</span>
+											</div>
+											<div class="card-info__category">
+												<div>Проходной<span> балл</span></div>
+												<span>от 152</span>
+											</div>
+											<div class="card-info__category">
+												<div>Оплата в год</div>
+												<span>от 90 000 ₽</span>
+											</div>
+										</div>
+									</a>
+									<a href="#" title="Прикладная математика и информатика" class="specialty__card card-specialty swiper-slide">
+										<div class="card-specialty__image _ibg">
+											<picture><source srcset="img/speciality.webp" type="image/webp"><img src="img/speciality.jpg" alt="Специальность"></picture>
+										</div>
+										<div class="card-specialty__info card-info">
+											<div class="card-info__number">бакалавриат<span>01.03.00</span></div>
+											<h3 class="card-info__name">Прикладная математика и информатика</h3>
+											<ul class="card-info__types">
+												<li class="card-info__type">Очно</li>
+												<li class="card-info__type">Заочно</li>
+												<li class="card-info__type">Очно-заочно</li>
+												<li class="card-info__type">Дистанционно</li>
+											</ul>
+											<div class="card-info__profiles">
+												<span class="card-info__profile">Программное обеспечение вычислительных систем</span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Математическое и программное обеспечение защиты информации</span></span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Экономика</span></span><span class="card-info__dot"></span>
+												<span class="card-info__profile">Организация педагогическо...</span>
+											</div>
+											<button class="card-info__all-profiles">Все 43 профиля</button>
+										</div>
+										<div class="card-info__tags">
+											<div class="card-info__icons">
+												<div class="card-info__icon">
+													<svg width="19" height="14">
+														<use href="#icon-dorm"></use>
+													</svg>
+												</div>
+												<div class="card-info__icon">
+													<svg width="16" height="16">
+														<use href="#icon-gos"></use>
+													</svg>
+												</div>
+												<div class="card-info__icon">
+													<svg width="18" height="13" fill="none">
+														<use href="#icon-war"></use>
+													</svg>
+												</div>
+											</div>
+											<div class="card-info__category">
+												<div>Бюджетных<span> мест</span></div>
+												<span>260</span>
+											</div>
+											<div class="card-info__category">
+												<div>Проходной<span> балл</span></div>
+												<span>от 152</span>
+											</div>
+											<div class="card-info__category">
+												<div>Оплата в год</div>
+												<span>от 90 000 ₽</span>
+											</div>
+										</div>
+									</a>
+								</div>
+								<div class="swiper-pagination"></div>
+							</div>
+							<button class="specialty__all-btn">Показать все специальности</button>
+						</section>
+						<section class="row__about about">
+							<div class="about__header">
+								<h2 class="about__title _title">Об университете</h2>
+								<div class="about__subtitle _subtitle">Об МГТУ им. Н. Э. Баумана</div>
+							</div>
+							<div class="about__gallery gallery-about">
+								<div class="gallery-about__body">
+									<a data-caption="МГТУ им. Н. Э. Баумана"
+										data-fancybox="gallery-1"
+										href="img/about/about-big.jpg" class="_ibg gallery-about__image gallery-about__image_big">
+										<picture><source srcset="img/about/about-big.webp" type="image/webp"><img src="img/about/about-big.jpg" alt="МГТУ им. Н. Э. Баумана"></picture>
+									</a>
+									<a data-caption="МГТУ им. Н. Э. Баумана"
+										data-fancybox="gallery-1"
+										href="img/about/about-small-1.jpg" class="gallery-about__image _ibg">
+										<picture><source srcset="img/about/about-small-1.webp" type="image/webp"><img src="img/about/about-small-1.jpg" alt="Об МГТУ им. Н. Э. Баумана"></picture>
+									</a>
+									<a data-caption="МГТУ им. Н. Э. Баумана"
+										data-fancybox="gallery-1"
+										href="img/about/about-small-2.jpg" class="gallery-about__image gallery-about__image_right-top _ibg">
+										<picture><source srcset="img/about/about-small-2.webp" type="image/webp"><img src="img/about/about-small-2.jpg" alt="Об МГТУ им. Н. Э. Баумана"></picture>
+									</a>
+									<a data-caption="МГТУ им. Н. Э. Баумана"
+										data-fancybox="gallery-1"
+										href="img/about/about-small-3.jpg" class="gallery-about__image _ibg">
+										<picture><source srcset="img/about/about-small-3.webp" type="image/webp"><img src="img/about/about-small-3.jpg" alt="Об МГТУ им. Н. Э. Баумана"></picture>
+									</a>
+									<a data-caption="МГТУ им. Н. Э. Баумана"
+										data-fancybox="gallery-1"
+										href="img/about/about-small-4.jpg" class="gallery-about__image gallery-about__image_right-bottom _ibg">
+										<picture><source srcset="img/about/about-small-4.webp" type="image/webp"><img src="img/about/about-small-4.jpg" alt="Об МГТУ им. Н. Э. Баумана"></picture>
+									</a>
+								</div>
+							</div>
+							<div class="about__info">
+								<div class="about__text">
+									<p>Московский университет ― это один из самых старейших университетов России, был основан в 1755 году. Университет известен во мире и занимает лидирующие места в рейтингах вузов самых различных направлений.</p>
+									<p>В 2008 году он получил награду «Европейское качество» «за стремление достичь высокого качества образовательных услуг в соответствии с международными стандартами». МГТУ им. Н. Э. Баумана в течение более чем 14 лет является головным вузом Ассоциации технических университетов, в состав которой входят более 130 российских университетов.</p>
+									<p>Московский университет ― это один из самых старейших университетов России, был основан в 1755 году. Университет известен во мире и занимает лидирующие места в рейтингах вузов самых различных направлений.</p>
+								</div>
+								<button class="about__full _visible">Развернуть</button>
+							</div>
+						</section>
+					</section>
+				</section>
+			</div>
+		</main>
+		<footer class="footer">
+	 <div class="_container">
+		 <div class="footer__body">
+			 <div class="footer__column">
+				 <div class="footer__info">
+					<a href="#" title="Главная" class="_icon-logo footer__logo"></a>
+					<a href="#" title="Помощник" class="footer__link footer__link_new">Помощник <span>new</span></a>
+					<a href="#" title="О нас" class="footer__link">О нас</a>
+					<a href="#" title="Обратная связь" class="footer__link">Обратная связь</a>
+				 </div>
+				 <div class="footer__social">
+					 <div class="footer__social-icons">
+						<a href="#" class="footer__social-icon footer__social-icon_facebook _icon-facebook"></a>
+						<a href="#" class="footer__social-icon footer__social-icon_vk _icon-vk"></a>
+					 </div>
+					 <a href="#" class="footer__social-email">studika@mail.ru</a>
+				 </div>
+				 <div class="footer__documents">
+					<a href="#">Пользовательское соглашение</a>
+					<a href="#">Обработка персональных данных</a>
+				 </div>
+			 </div>
+			 <div class="footer__column">
+				 <h3 class="footer__title">студентам</h3>
+				 <a href="#" title="Вузы" class="footer__link">Вузы</a>
+				 <a href="#" title="Колледжи" class="footer__link">Колледжи</a>
+				 <a href="#" title="Техникумы" class="footer__link">Техникумы</a>
+				 <a href="#" title="Училища" class="footer__link">Училища</a>
+				 <a href="#" title="Специальности" class="footer__link">Специальности</a>
+				 <a href="#" title="Профессии" class="footer__link">Профессии</a>
+				 <a href="#" title="Отзывы" class="footer__link">Отзывы</a>
+				 <a href="#" title="Тест на профориентацию" class="footer__link">Тест на профориентацию</a>
+			 </div>
+			 <div class="footer__column">
+				<h3 class="footer__title">учебным заведениям</h3>
+				<a href="#" title="Партнёрская программа" class="footer__link">Партнёрская программа</a>
+				<a href="#" title="Личный кабинет" class="footer__link">Личный кабинет</a>
+				<a href="#" title="Размещение рекламы" class="footer__link">Размещение рекламы</a>
+				<a href="#" title="Добавить учебное заведение" class="footer__link">Добавить учебное заведение</a>
+				<a href="#" title="Инструкция по личному кабинету" class="footer__link">Инструкция по личному кабинету</a>
+				<a href="#" title="Правила работы с отзывами" class="footer__link">Правила работы с отзывами</a>
+			 </div>
+			 <div class="footer__column">
+				<h3 class="footer__title">популярные вузы</h3>
+				<article class="footer__card university-card">
+					<div class="university-card__body">
+						<div class="university-card__image _ibg">
+							<picture><source srcset="img/popular/mgu.webp" type="image/webp"><img src="img/popular/mgu.jpg" alt="МГУ"></picture>
+							<div class="university-card__logo">
+								<picture><source srcset="img/popular/mgu-logo.webp" type="image/webp"><img src="img/popular/mgu-logo.png" alt="Логотип"></picture>
+							</div>
+						</div>
+						<a href="#" title="МГУ" class="university-card__text">МГУ — Московский государственный университет имени М.В. Ломоносова</a>
+					</div>
+				</article>
+				<article class="footer__card university-card">
+					<div class="university-card__body">
+						<div class="university-card__image _ibg">
+							<picture><source srcset="img/popular/bauman.webp" type="image/webp"><img src="img/popular/bauman.jpg" alt="Баумана"></picture>
+							<div class="university-card__logo">
+								<picture><source srcset="img/popular/bauman-logo.webp" type="image/webp"><img src="img/popular/bauman-logo.png" alt="Логотип"></picture>
+							</div>
+						</div>
+						<a href="#" title="Баумана" class="university-card__text">Московский государственный технический университет имени Н.Э. Баумана </a>
+					</div>
+				</article>
+				<article class="footer__card university-card">
+					<div class="university-card__body">
+						<div class="university-card__image _ibg">
+							<picture><source srcset="img/popular/bid.webp" type="image/webp"><img src="img/popular/bid.jpg" alt="БиД"></picture>
+							<div class="university-card__logo">
+								<picture><source srcset="img/popular/bid-logo.webp" type="image/webp"><img src="img/popular/bid-logo.png" alt="Логотип"></picture>
+							</div>
+						</div>
+						<a href="#" title="БиД" class="university-card__text">Институт бизнеса и дизайна </a>
+					</div>
+				</article>
+			 </div>
+		 </div>
+	 </div>
+</footer>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js?_v=20220428120146"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js?_v=20220428120146"></script>
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js?_v=20220428120146"></script>
+	<script src="js/app.min.js?_v=20220428120146"></script>
+</body>
+
+</html>
